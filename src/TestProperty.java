@@ -49,6 +49,7 @@ public class TestProperty {
 		while (iterator.hasNext()) {
 			String cle = (String) iterator.next();
 			System.out.println(cle+" : "+map.get(cle));
+
 		}
 	}
 }
