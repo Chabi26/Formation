@@ -3,8 +3,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Hashtable;
 import java.util.Random;
 import java.util.StringTokenizer;
+import java.util.Vector;
 
 import javafx.scene.input.DataFormat;
 
@@ -70,6 +72,32 @@ public class test9
 		{
 			e.printStackTrace();
 		}
+
+
+		//Vector à partir de java 1.2 tu vas utiliser les collections
+		Vector v = new Vector();
+		v.addElement(new Integer(23));
+		v.addElement(new Float(3.12));
+		v.insertElementAt("chaine ", 1);
+		System.out.println("le vecteur contient "+v.size()+" élements");
+
+		Integer retrouve = (Integer)v.elementAt(0);
+		System.out.println("le premier element est "+retrouve);
+
+		for (int i = 0; i<v.size(); i++ ){
+			System.out.println(v.elementAt(i));
+		}
+
+		//HashTable à partir de java 1.2 tu vas utiliser les collections
+
+		Hashtable dico = new Hashtable();
+		dico.put("toto", "filou");
+		dico.put(new Integer(2), "dd");
+		dico.put(new Integer(2),"deuxième");
+
+		System.out.println("Dans le hashtable "+dico.get("toto"));
+
+
 
 
 	}
