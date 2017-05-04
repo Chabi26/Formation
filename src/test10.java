@@ -1,12 +1,17 @@
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
+import java.util.zip.Deflater;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
+import java.util.zip.ZipOutputStream;
 
 
 
@@ -59,6 +64,8 @@ public class test10
 		listerZip("./tp1-eve.zip");
 
 		//ZipOutputStream
+
+		compresser("atoto.zip", "Suite2.txt");
 	}
 
 	public static void listerZip(String nomFichier){
@@ -84,5 +91,46 @@ public class test10
 		}
 	}
 
+		public static void compresser(String nomArchive, String nomFichier){
 
+		//La classe ZipOutputStream est un flux qui permet l'écriture de données dans l'archive.
+			try
+			{
+				ZipOutputStream zip = new ZipOutputStream(new FileOutputStream(nomArchive));
+				//Modifier la méthode de compression utilisée par défaut. Les valeurs possibles sont STORED (aucune compression) ou DEFLATED (avec compression)
+				zip.setMethod(ZipOutputStream.DEFLATED);
+				//Modifier le taux de compression : les valeurs entières possibles vont de 0 à 9 où 9 correspond au taux de compression le plus élevé. Des constantes sont définies dans la classe Deflater : Deflater.BEST_COMPRESSION, Deflater.DEFAULT_COMPRESSION, Deflater.BEST_SPEED, Deflater.NO_COMPRESSION
+				zip.setLevel(Deflater.BEST_COMPRESSION);
+
+				//lecture du fichier
+				File fichier = new File(nomFichier);
+				FileInputStream fis = new FileInputStream(fichier);
+				byte[] bytes = new byte[fis.available()];
+				fis.read(bytes);
+
+				// ajout d'une nouvelle entrée dans l'archive contenant le fichier
+				ZipEntry entry = new ZipEntry(nomFichier);
+				entry.setTime(fichier.lastModified());
+				zip.putNextEntry(entry);
+				zip.write(bytes);
+
+				// fermeture des flux
+				zip.closeEntry();
+				fis.close();
+				zip.close();
+			}
+			catch (FileNotFoundException e)
+			{
+				e.printStackTrace();
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+
+		}
+
+		public static void decompresser(String nomArchive, String chemin){
+
+		}
 }
