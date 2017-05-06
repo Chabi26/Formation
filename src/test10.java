@@ -1,8 +1,4 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.Hashtable;
@@ -66,6 +62,8 @@ public class test10
 		//ZipOutputStream
 
 		compresser("atoto.zip", "Suite2.txt");
+
+		decompresser("./aziper.zip", "./monzip2");
 	}
 
 	public static void listerZip(String nomFichier){
@@ -132,5 +130,43 @@ public class test10
 
 		public static void decompresser(String nomArchive, String chemin){
 
-		}
+            try {
+                ZipFile zipFile = new ZipFile(nomArchive);
+                Enumeration<ZipEntry> entries = (Enumeration<ZipEntry>) zipFile.entries();
+                ZipEntry entry = null;
+                File fichier = null;
+                File sousRep = null;
+                while(entries.hasMoreElements()){
+                    entry = entries.nextElement();
+                    if(!entry.isDirectory()){
+                        System.out.println("Extraction du fichier "+entry.getName());
+                        fichier = new File(chemin + File.separatorChar + entry.getName());
+                        sousRep = fichier.getParentFile();
+
+                        if(sousRep != null){
+                            if(!sousRep.exists()){
+                                sousRep.mkdirs();
+                            }
+                        }
+
+                        int i = 0;
+                        byte[] bytes = new byte[1024];
+                        BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(fichier));
+                        BufferedInputStream in = new BufferedInputStream(zipFile.getInputStream(entry));
+
+                        while((i = in.read(bytes)) != -1){
+                            out.write(bytes, 0, i);
+                        }
+                        in.close();
+                        out.flush();
+                        out.close();
+
+                    }
+
+                }
+                zipFile.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 }
