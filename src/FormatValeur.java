@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Created by eve on 03/05/2017.
  */
-public class MettreMaj {
+public class FormatValeur {
 
 	static final String lMaj = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	static final String lMin = "abcdefghijklmnopqrstuvwxyz";

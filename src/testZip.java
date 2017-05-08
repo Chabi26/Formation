@@ -14,7 +14,7 @@ import java.util.zip.ZipOutputStream;
 /**
  * Created by eve on 04/05/2017.
  */
-public class test10
+public class testZip
 {
 	public static void main(String[] args)
 	{

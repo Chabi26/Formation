@@ -1,3 +1,8 @@
+package MesClassesInternes;
+
+import MesClassesInternes.Service;
+import MesClassesInternes.ServiceComptable;
+
 /**
  * Created by eve on 02/05/2017.
  */
@@ -6,8 +11,8 @@ public class TestMethodeParDefaut
 	public static void main(String[] args)
 	{
 		//Il est aussi possible de créer directement une instance d'une interface si toutes ses méthodes sont des méthodes par défaut.
-		//Service service = new Service(){};
-		/*Groupe service = new MonService();
+		//MesClassesInternes.Service service = new MesClassesInternes.Service(){};
+		/*MesClassesInternes.Groupe service = new MesClassesInternes.MonService();
 		service.afficherNom();*/
 
 		Service service = new ServiceComptable();

@@ -1,3 +1,8 @@
+package MesClassesInternes;
+
+import MesClassesInternes.MonService;
+import MesClassesInternes.Service;
+
 /**
  * Created by eve on 02/05/2017.
  */

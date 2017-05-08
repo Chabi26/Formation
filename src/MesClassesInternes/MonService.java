@@ -1,7 +1,9 @@
+package MesClassesInternes;
+
 /**
  * Created by eve on 02/05/2017.
  */
-//public class MonService implements Service, Groupe, ServiceEtendu
+//public class MesClassesInternes.MonService implements MesClassesInternes.Service, MesClassesInternes.Groupe, MesClassesInternes.ServiceEtendu
 public class MonService implements ServiceEtendu
 {
 	//Dans un cas où plusieurs interfaces ont la même méthodes par defaut, il faut forcément explicitement implémenter la méthode ici

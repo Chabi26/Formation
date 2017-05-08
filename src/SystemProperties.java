@@ -7,7 +7,7 @@ import java.util.Set;
 /**
  * Created by eve on 03/05/2017.
  */
-public class TestProperty {
+public class SystemProperties {
 
 	public static void main(String[] args) {
 		System.out.println("java.version                ="+System.getProperty("java.version"));
